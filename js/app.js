@@ -168,7 +168,7 @@ database.ref("/outcome/").on("value", function (snapshot) {
 //  Button Events Section
 //
 */
-
+var warned = 0;
 // Attach an event handler to the "Submit" button to add a new user to the database
 $("#add-name").on("click", function (event) {
 	event.preventDefault();
@@ -227,10 +227,24 @@ $("#add-name").on("click", function (event) {
 		// Save the join chat entry
 		database.ref("/chat/" + chatKey).set(msg);
 
+		// checks if the name iput is blank and if not blank submit and remove imput name alert
+
 		// Reset the name input box
-		$("#name-input").val("");
+		//$("#name-input").val("");
 	}
-	$("#nameSetter").remove();
+		//prevent name alert from closing without name
+		if ($("#name-input").val() != "") {
+			$("#nameSetter").remove();
+		} 
+		if ($("#name-input").val() == "" && warned == 0){
+			warned = 1;
+			var brk = $("</br>");
+			var para = $("<p>").addClass("text-danger").text("please type in a name to submit");
+			$("#name-form").after(brk);
+			brk.after(para);
+			
+		}
+
 });
 
 // Attach an event handler to the chat "Send" button to append the new message to the conversation

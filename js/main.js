@@ -7,6 +7,19 @@ $(document).ready(function () {
         trigger: "hover",
         boundary: "window",
     });
+
+    $(".help").attr("data-content",
+    "<h5>I entered my name and hit submit but nothing happened?</h5>" +
+    "</br>" +
+    "<h6 class='mt-1 pt-1'>Sorry buddy you can't fly solo with this one grab a friend and send them the link</6>" +
+    "<hr>" +
+    "<h5>My friend keeps winning...</h5>" +
+    "</br>" +
+    "<h6 class='mt-1 pt-1'>Git GUD!</6>" +
+    "<hr>" +
+    "<h5>My friends' rock, paper and scissors look different, why?</h5>" +
+    "</br>" +
+    "<h6 class='mt-1 pt-1'>the rock paper and scissors icons are upscaled emojis, which makes them differ on various devices and platforms.</6>");
 });
 
 
