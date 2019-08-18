@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RPS Online</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="main.css">
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script> -->
+
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <!-- Custom JS here -->
+  <script src="js/api.js"></script>
+
+
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">RPS Online</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Play
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link score" href="#" data-toggle="popover" title="Score:"
+              data-content="No Scores yet... </br> Play a round!">score</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link help" href="#"data-toggle="popover" title="Help:"
+            data-content="">Help</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <!-- input username alert -->
+  <div id="nameSetter" class="alert alert-info alert-dismissible fade show" role="alert">
+    <form id="name-form">
+      <strong>Please select a </br> name to start playing: </strong></br>
+      <input type="text" id="name-input" placeholder="Your Name">
+      <input id="add-name" type="submit" value="Submit">
+    </form>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <!-- chat-->
+  <div class="containers">
+    <div class="alert myAlert-bottom alert-info alert-dismissible fade show" role="alert">
+      <form id="chat-form">
+        <div class="row">
+          <strong>Type Your Message! </strong>
+        </div>
+        <div class="row">
+          <textarea type="text" id="chat-input" class="textInput rounded"></textarea>
+          <button type="button" id="chat-send" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="col">
+      <div id="chatDisplay"></div>
+    </div>
+  </div>
+  </div>
+
+  <div id="hidden_content">
+    <!-- start game alert -->
+    <div class="alert alert-warning isDemo alert-dismissible fade show" role="alert">
+      <strong>Choose a move!</strong> ROCK!💎 Paper...📃 or S\c\IsS\oR\s✂️.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- win alert -->
+    <div class="alert alert-success isDemo alert-dismissible fade show" role="alert">
+      <strong>??? Wins</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm mt-3 selectable">
+        <div class="card" style="width: 18rem; text-align:center;">
+          <!-- <img src="..." class="card-img-top" alt="..."> -->
+          <div class="card--top" style="font-size: 15rem;">💎</div>
+
+          <div class="card-body">
+            <p class="card-text"><strong class="choice">Rock</strong></p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm mt-3 selectable">
+        <div class="card" style="width: 18rem; text-align:center;">
+          <!-- <img src="..." class="card-img-top" alt="..."> -->
+          <div class="card--top" style="font-size: 15rem;">📃</div>
+
+          <div class="card-body">
+            <p class="card-text"><strong class="choice">Paper</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm mt-3 selectable">
+        <div class="card" style="width: 18rem; text-align:center;">
+          <!-- <img src="..." class="card-img-top" alt="..."> -->
+          <div class="card--top" style="font-size: 15rem;">✂️</div>
+
+          <div class="card-body">
+            <p class="card-text"><strong class="choice">Scissors</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/app.js"></script>
+
+
+</body>
+
+</html>

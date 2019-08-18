@@ -1,0 +1,38 @@
+.timerHid {
+    display: none;
+}
+
+.timer {
+    display: block;
+}
+
+#outPopUp {
+    position: absolute;
+    background-color: "";
+    padding: 1px;
+    z-index: 15;
+}
+
+#hidden_content{
+    display:none;
+}
+
+.myAlert-bottom{
+    position: fixed;
+    bottom: 5px;
+    left:2%;
+    width: 96%;
+    z-index: 5;
+}
+
+.textInput{
+    width: 100%;
+    resize: none;
+}
+
+
+#chatDisplay{
+    overflow-y: scroll;
+    height: 4em;
+    overflow-wrap: normal;
+}
