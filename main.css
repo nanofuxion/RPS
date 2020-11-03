@@ -36,3 +36,14 @@
     height: 4em;
     overflow-wrap: normal;
 }
+
+
+    .emoji {
+        font-size: 14rem;
+    }
+
+@media only screen and (max-width: 640px) {
+    .emoji {
+        font-size: 4rem;
+    }
+}
